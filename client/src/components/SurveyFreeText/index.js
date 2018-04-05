@@ -5,9 +5,8 @@ import { TextField } from 'material-ui';
 
 const styles = {        
     textField: {
-      height: 80,
-      width: '100%',
-      padding: 0,
+      width: '80%',
+      paddingTop: 10,
       display: 'block',
       textAlign: 'left',    
       'label + &': {

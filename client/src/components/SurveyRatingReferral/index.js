@@ -11,7 +11,7 @@ const renderSelectField = ({
     children
   }) => (
     <Select
-        style={{display:'block', paddingBottom:12, paddingTop:2, fontSize:14}}
+        style={{display:'block', width:'80%', paddingTop: 14, fontSize:14}}
         underlineStyle={{borderColor:'#979797'}}
         floatingLabelText={label}
         floatingLabelStyle={{color: '#828282', fontSize:16}}

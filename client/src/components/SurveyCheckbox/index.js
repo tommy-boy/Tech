@@ -6,7 +6,7 @@ const styles = {
     checkbox: {
         float: 'left',
         display:'inline-block',         
-        verticalAlign: 'middle',
+        verticalAlign: 'middle',        
         width: 46,
         height: 92        
     },
@@ -24,6 +24,7 @@ const SurveyCheckbox = () => {
             onCheck={input.onChange}
             style={styles.checkbox}
             iconStyle={styles.iconStyle}
+            color="#094AA8"
         />
     );
     return (

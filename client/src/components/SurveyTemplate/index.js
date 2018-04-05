@@ -1,10 +1,11 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { reduxForm, formValueSelector } from 'redux-form'
+import { reduxForm } from 'redux-form'
+import { withStyles } from 'material-ui/styles';
 import Questions from '../../mock/surveyQuestions' //will be removed
-import fetchSurveyData from '../../actions/getSurvey'
-import { submitSurvey } from '../../actions/submitSurvey'
+import { fetchSurveyData } from '../../actions/getSurvey'
+/* import { submitSurvey } from '../../actions/submitSurvey' */
 import { addFeedback } from '../../actions/addFeedback'
 import Divider from 'material-ui/Divider'
 import { Button } from 'material-ui';
@@ -54,17 +55,12 @@ const Logo = styled.img`
   }
 `;
 
-const Sections = styled.div`
-  display: block;  
-`;
-
 const Text = styled.span`
   padding-right: 4px;
   text-align: justify;  
   font-size: 0.9em; 
   line-height: normal;  
-  vertical-align: middle;
-  font-family: Roboto;
+  vertical-align: middle;  
   color: #4D4D4D;    
 `;
 
@@ -73,7 +69,7 @@ const SurveyText = styled.p`
   color: #4D4D4D;
 `;
 
-const Rating = styled.div` 
+const Overall = styled.div` 
   width: 192px;
   padding-top: 14px;  
   padding-left: 6px;  
@@ -82,21 +78,6 @@ const Rating = styled.div`
   color: #4D4D4D;
   & span:last-of-type {
     float: right;
-  }
-`;
-
-const Referral = styled.div` 
-  width: 384px;
-  padding-top: 14px;  
-  padding-left: 6px;  
-  font-size: 0.9em;
-  margin-bottom: 0;
-  color: #4D4D4D;
-  & span:last-of-type {
-    float: right;
-  }
-  @media (min-width: 320px)and (max-width: 480px) {    
-    max-width: 74%;  
   }
 `;
 
@@ -163,23 +144,6 @@ const styles = {
     height: '43px',
     verticalAlign: 'middle',
   },
-  icon: {
-    width: 20,
-    height: 20
-  },
-  errorStyle: {
-    color: 'orange500',
-  },
-  textField: {
-    height: 80,
-    width: '100%',
-    padding: 0,
-    display: 'block',
-    textAlign: 'left',
-    'label + &': {
-      marginTop: 12,
-    },
-  },
 };
 
 class SurveyTemplate extends React.Component {
@@ -187,7 +151,7 @@ class SurveyTemplate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      state: [],
+      survey: [],
       entity: Questions
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -202,8 +166,6 @@ class SurveyTemplate extends React.Component {
 
   handleFormSubmit(formValues) {
 
-    console.log(formValues);
-
     //handle submit dispatch    
     //this.props.dispatch(submitSurvey(formValues));
 
@@ -214,21 +176,18 @@ class SurveyTemplate extends React.Component {
     if (formValues.rating_overall > 3) {      
       return (
         this.props.dispatch(addFeedback(formValues.postiveFeedback__input_didwell)),
-        this.props.history.push('/plus')
+        this.props.history.push('/SurveyPositiveFeedback')
       )
     } else {     
       return (
         this.props.dispatch(addFeedback(formValues.postiveFeedback_input_didwell)),
-        this.props.history.push('/minus')
+        this.props.history.push('/SurveyNegativeFeedback')
       )
     }
   }
   
   render() {
     const { handleSubmit } = this.props;
-
-    /* console.log('Survey: ', this.state.survey); */
-
     const entity = this.state.entity[0];
 
     const sections = entity.questions.map((question, i) => {
@@ -239,11 +198,11 @@ class SurveyTemplate extends React.Component {
               <Label>
                 {i + 1}. <span>{question.label.value}</span>
               </Label>
-              <Rating >
+              <Overall >
                 <span>Poor</span>
                 <span style={{color:'#094AA8', fontWeight:700}}>Excellent</span>
                 <RatingOverall />
-              </Rating>              
+              </Overall>              
             </div>
           )
         case 'OptionGroup':
@@ -252,7 +211,7 @@ class SurveyTemplate extends React.Component {
               <Label >
                 {i + 1}. <span>{question.label.value}</span>
               </Label>
-              <RatingReferral />
+                <RatingReferral />              
             </div>
           )
         case 'FreeText':
@@ -280,7 +239,7 @@ class SurveyTemplate extends React.Component {
               <SurveyText>{entity.properties.introText.value} </SurveyText>
               <form id="surveyForm" onSubmit={handleSubmit(this.handleFormSubmit)} >
                 {sections}
-                <Divider style={{ backgroundColor: '#979797', height: 2, marginTop: 32, marginBottom: 32 }} />
+                <Divider style={{ backgroundColor: '#979797', height: 2, marginTop: 48, marginBottom: 32 }} />
                 <Footer>
                   <ColLeft>
                     <TOSCheckbox />                  
@@ -288,13 +247,7 @@ class SurveyTemplate extends React.Component {
                     <Terms />
                   </ColLeft>
                   <ColRight>
-                    <Button
-                      style={styles.submitbutton}
-                      label="Submit"
-                      primary={true}
-                      type="submit"
-                      form="surveyForm"
-                    />
+                    <Button style={styles.submitbutton} label="Submit" primary={true} color="#ffffff" type="submit" form="surveyForm">Submit</Button>
                   </ColRight>                
                 </Footer>
               </form>
@@ -310,8 +263,6 @@ class SurveyTemplate extends React.Component {
     );
   }
 }
-
-const selector = formValueSelector('surveyForm');
 
 const mapStateToProps = (state, ownProps) => ({
   surveyId: ownProps.surveyId
