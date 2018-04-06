@@ -2,7 +2,6 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import { withStyles } from 'material-ui/styles';
 import Questions from '../../mock/surveyQuestions' //will be removed
 import { fetchSurveyData } from '../../actions/getSurvey'
 /* import { submitSurvey } from '../../actions/submitSurvey' */
