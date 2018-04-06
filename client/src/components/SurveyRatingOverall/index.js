@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Field } from 'redux-form'
-import styled, {ThemeProvider} from 'styled-components'
 import SurveyRating from 'react-stars'
 
 const renderReviewRating = ({
@@ -20,10 +19,6 @@ const renderReviewRating = ({
 
   class RatingOverall extends React.Component {
   
-    constructor(props) {
-      super(props);
-    }
-
     render() {
     
       return (
