@@ -23,12 +23,6 @@ const styles = {
     color: '#4D4D4D',  
     textTransform: "capitalize",
   },
-  label: {
-    fontSize: '0.9em',    
-    textTransform: "capitalize",
-    color: 'blue',
-    padding: 0
-  }
 };
 
 class Terms extends React.Component {
@@ -55,7 +49,7 @@ class Terms extends React.Component {
 
     return (
       <span>
-        <Button style={styles.termsbutton} labelStyle={styles.label} label="Terms of Use." onClick={this.handleOpen} />
+        <Button style={styles.termsbutton} label="Terms of Use." onClick={this.handleOpen} />
         <Dialog
           title="Terms of Use"
           titleStyle={styles.title}
