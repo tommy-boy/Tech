@@ -1,7 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Divider from 'material-ui/Divider';
-import styled, {ThemeProvider} from 'styled-components';
-import Questions from '@/mock/surveyQuestions'
+import styled from 'styled-components';
+import Questions from '../../mock/surveyQuestions'
 
 const Container = styled.div`
   display: block;
@@ -52,29 +53,6 @@ const SurveyText = styled.p`
   color: #4D4D4D;
 `;
 
-const Text = styled.div`
-  color: #4D4D4D;
-  font-size: 0.8em; 
-  line-height: normal;
-  text-align: center;
-  vertical-align: middle;
-`;
-
-const ReplyText = styled.p`
-  font-size: 0.9em;
-  text-align: left;
-  color: #4D4D4D;
-`;
-
-const Footer = styled.div`
-  display: block; 
-  &::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-`;
-
 const FooterRS = styled.div`
   display: block;
   width: 600px;
@@ -84,7 +62,7 @@ const FooterRS = styled.div`
   color: #4D4D4D; 
 `;
 
-class SurveyNegativeFeedbackPage extends React.Component {
+class SurveyNegativeFeedback extends React.Component {
   
   constructor(props) {
     super(props);
@@ -121,4 +99,8 @@ class SurveyNegativeFeedbackPage extends React.Component {
   }
 }
 
-
+const mapStateToProps = (state) => ({
+   
+  });
+  
+export default connect(mapStateToProps)(SurveyNegativeFeedback)
