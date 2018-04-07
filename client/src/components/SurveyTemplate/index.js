@@ -54,6 +54,17 @@ const Logo = styled.img`
   }
 `;
 
+const TextContainer = styled(FreeText)`
+display: 'block';
+  background: red !important;
+  width: '80%',
+  padding-top: 10,
+  text-align: 'left',    
+    'label + &': {
+      margin-top: 12,
+    },
+`
+
 const Text = styled.span`
   padding-right: 4px;
   text-align: justify;  
@@ -156,12 +167,12 @@ class SurveyTemplate extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  componentDidMount() {
+  /* componentDidMount(props) {
     const { fetchSurveyData, surveyId } = this.props;
-    fetchSurveyData(surveyId).then(survey => {
+    fetchSurveyData(parseInt(props.match.params.number)).then(survey => {
       this.setState({survey});
     })
-  }
+  } */
 
   handleFormSubmit(formValues) {
 
@@ -225,6 +236,7 @@ class SurveyTemplate extends React.Component {
         default:
           break;
       }
+      return sections
     });
 
     return (
@@ -246,7 +258,7 @@ class SurveyTemplate extends React.Component {
                     <Terms />
                   </ColLeft>
                   <ColRight>
-                    <Button style={styles.submitbutton} label="Submit" primary={true} color="#ffffff" type="submit" form="surveyForm">Submit</Button>
+                    <Button style={styles.submitbutton} label="Submit" type="submit" form="surveyForm">Submit</Button>
                   </ColRight>                
                 </Footer>
               </form>
@@ -264,7 +276,7 @@ class SurveyTemplate extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  surveyId: ownProps.surveyId
+ /*  surveyId: this.state.surveyId */
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -285,3 +297,4 @@ export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
   enableReinitialize: true
 },
 )(SurveyTemplate));
+
