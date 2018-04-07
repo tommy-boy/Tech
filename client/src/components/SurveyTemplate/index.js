@@ -54,16 +54,10 @@ const Logo = styled.img`
   }
 `;
 
-const TextContainer = styled(FreeText)`
-display: 'block';
-  background: red !important;
-  width: '80%',
-  padding-top: 10,
-  text-align: 'left',    
-    'label + &': {
-      margin-top: 12,
-    },
-`
+const TextBox = styled.div`
+  border: 1px solid #828282;
+  padding: 10px;
+`;
 
 const Text = styled.span`
   padding-right: 4px;
@@ -154,6 +148,14 @@ const styles = {
     height: '43px',
     verticalAlign: 'middle',
   },
+  freeText: {
+    color: '#ffffff',
+    backgroundColor: "#094AA8",
+    hoverColor: "#063679",
+    width: '98px',
+    height: '43px',
+    verticalAlign: 'middle',
+  },
 };
 
 class SurveyTemplate extends React.Component {
@@ -230,7 +232,9 @@ class SurveyTemplate extends React.Component {
               <Label style={{paddingBottom: 4}}>
                 {i + 1}. <span>{question.label.value}</span>
               </Label>
-              <FreeText id={question.context} />
+              <TextBox>
+                <FreeText id={question.context} />
+              </TextBox>
             </div>
           )
         default:
@@ -297,4 +301,3 @@ export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
   enableReinitialize: true
 },
 )(SurveyTemplate));
-
