@@ -1,12 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import changeClipboardValue from '../../actions/changeClipboardValue'
 import Feedback from '../SurveyFeedbackInput';
-import ShareButtons from '~/SurveyShareButtons'
+import ShareButtons from '../SurveyShareButtons'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { FlatButton } from 'material-ui';
+import { Button } from 'material-ui';
 import Divider from 'material-ui/Divider';
 import { ContentCopy } from 'material-ui-icons';
-import styled, {ThemeProvider} from 'styled-components';
-import Questions from '@/mock/surveyQuestions'
+import styled from 'styled-components';
+import Questions from '../../mock/surveyQuestions'
 
 const Container = styled.div`
   display: block;
@@ -46,16 +49,6 @@ const Logo = styled.img`
   @media (min-width: 320px)and (max-width: 768px) {    
     max-width: 100%;  
   }
-`;
-
-const Text = styled.span`
-  padding-right: 4px;
-  text-align: justify;  
-  font-size: 0.9em; 
-  line-height: normal;  
-  vertical-align: middle;
-  font-family: Roboto;
-  color: #4D4D4D;    
 `;
 
 const Salutation = styled.p`
@@ -107,14 +100,9 @@ const styles = {
   title: {  
     color: '#FFFFFF',      
   },
-  label: {
-    fontSize: '0.9em',    
-    color: '#FFFFFF',
-    textTransform: 'normal',
-  }
 };
 
-export default class SurveyPositiveFeedbackPage extends React.Component {
+class SurveyPositiveFeedback extends React.Component {
 
   constructor(props) {
     super(props);
@@ -144,9 +132,8 @@ export default class SurveyPositiveFeedbackPage extends React.Component {
             text={this.props.copiedText} 
             onCopy={this.onCopy}
           >
-          <FlatButton 
+          <Button 
                 style={styles.flatbutton} 
-                labelStyle={styles.label} 
                 label="Copy to Clipboard"
                 labelPosition="after"
                 icon={<ContentCopy />}
@@ -161,7 +148,7 @@ export default class SurveyPositiveFeedbackPage extends React.Component {
             <ColRight>
             <Link href='/thankyou'>
               <a>     
-                <FlatButton
+                <Button
                   style={styles.flatbutton}
                   label="DONE"
                   primary={true}
@@ -180,3 +167,15 @@ export default class SurveyPositiveFeedbackPage extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({ positiveFeedback }) => ({    
+  copiedText: positiveFeedback   
+})
+
+const mapDispatchToProps = dispatch => ({
+  actionOnCopy: newValue => {
+      dispatch(changeClipboardValue(newValue))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyPositiveFeedback)
