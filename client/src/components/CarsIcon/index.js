@@ -8,4 +8,4 @@ const Icon = styled.img`
     vertical-align: middle;
 `;
 
-export default () => <Icon src="../../static/icons/Cars.com.png"  />
+export default () => <Icon src="../Shared/icons/Cars.com.png"  />
