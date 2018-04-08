@@ -1,47 +1,37 @@
 import React from 'react';
-import Link from 'next/link'
-import FlatButton from 'material-ui/FlatButton';
-import ActionTwitter from '~/TwitterIcon';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+import Button from 'material-ui/Button';
+import ActionTwitter from '../TwitterIcon';
 
 const styles = { 
   flatbutton: {
     marginBottom: 12,
-    width: '100%',  
+    width: '100%',
+    color: '#FFFFFF',  
     backgroundColor: '#55ACEE',            
     hoverColor: 'transparent',
     verticalAlign: 'middle',
-    textAlign: 'left',   
+    textTransform: "capitalize",
+
+    textAlign: 'left', 
   },
   title: {  
     color: '#FFFFFF',      
-  },
-  label: {
-    fontSize: '0.9em',    
-    color: '#FFFFFF',
-    textTransform: 'normal',
   }
 };
 
 class VisitTwitterButton extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
+  
   render() {
-    return (      
+    return ( 
       <div>        
-        <Link href='http://www.twitter.com'>
-        <a target="_blank">
-            <FlatButton 
-            style={styles.flatbutton} 
-            labelStyle={styles.label} 
-            label="Visit us on Twitter"
-            labelPosition="after" 
-            icon={<ActionTwitter />}  
-            />
-        </a>
+        <Link to='http://www.twitter.com' target="_blank" style={{ textDecoration: 'none' }}>
+            <Button 
+              style={styles.flatbutton}        
+            >
+              <ActionTwitter />
+              Visit us on Twitter
+            </Button>
         </Link>       
       </div>
     );
