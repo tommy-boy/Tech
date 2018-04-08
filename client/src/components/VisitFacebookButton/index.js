@@ -24,7 +24,7 @@ class VisitFacebookButton extends React.Component {
   render() {
     return (    
       <div>        
-        <Link to='http://www.facebook.com' style={{ textDecoration: 'none' }}>
+        <Link to='http://www.facebook.com' target="_blank" style={{ textDecoration: 'none' }}>
             <Button 
               style={styles.flatbutton}             
             >
