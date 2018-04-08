@@ -1,21 +1,33 @@
 import React from 'react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { MuiThemeProvider } from 'material-ui/styles';
 import { survey } from '../../themes'
-import { Route, Switch } from 'react-router-dom'
 import SurveyTemplate from '../SurveyTemplate'
 import SurveyPositiveFeedback from '../SurveyPositiveFeedback'
 import SurveyNegativeFeedback from '../SurveyNegativeFeedback'
+import SurveyThankYou from '../SurveyThankYou'
 
-const App = () => {    
+const App = () => {   
     return (
+        <Router>
         <MuiThemeProvider theme={survey}>
             <Switch>
-                <Route path="/" component={SurveyTemplate} />
-                <Route path="/plus/" component={SurveyPositiveFeedback} />
-                <Route path="/minus/" component={SurveyNegativeFeedback} />
+                <Route exact={true} path="/" render={({match}) => (
+                    <SurveyTemplate />
+                )} />
+                <Route exact={true} path="/plus" render={({match}) => (
+                    <SurveyPositiveFeedback/>
+                )} />
+                 <Route exact={true} path="/minus" render={({match}) => (
+                    <SurveyNegativeFeedback/>
+                )} />
+                <Route exact={true} path="/thankyou" render={({match}) => (
+                    <SurveyThankYou/>
+                )} />
                 <Route render={() => <h1>Page not found</h1>} />
             </Switch>
         </MuiThemeProvider>
+        </Router>
     )
 }
 
