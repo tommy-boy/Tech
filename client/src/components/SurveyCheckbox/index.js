@@ -1,6 +1,6 @@
-import React from 'react';
-import { Field } from 'redux-form';
-import { Checkbox } from 'material-ui';
+import React from 'react'
+import { Field } from 'redux-form'
+import { Checkbox } from 'material-ui'
 
 const styles = {
     checkbox: {
@@ -10,21 +10,15 @@ const styles = {
         width: 46,
         height: 92        
     },
-    iconStyle: {
-        width: 24,
-        height: 24,
-        fill: '#094AA8'
-    },
 };
 
 const SurveyCheckbox = () => {
     const renderSurveyCheckbox = ({ input }) => (
         <Checkbox
-            checked={input.value ? true : false}
-            onCheck={input.onChange}
+            color='primary'
             style={styles.checkbox}
-            iconStyle={styles.iconStyle}
-            color="#094AA8"
+            checked={input.value ? true : false}
+            onChange={input.onChange}                    
         />
     );
     return (
