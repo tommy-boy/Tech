@@ -2,6 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
+import { withRouter} from 'react-router-dom';
 import Questions from '../../mock/surveyQuestions' //will be removed
 import { fetchSurveyData } from '../../actions/getSurvey'
 /* import { submitSurvey } from '../../actions/submitSurvey' */
@@ -55,7 +56,7 @@ const Logo = styled.img`
 `;
 
 const TextBox = styled.div`
-  border: 1px solid #828282;
+  border: 1px solid #9B9B9B;
   padding: 10px;
 `;
 
@@ -195,7 +196,7 @@ class SurveyTemplate extends React.Component {
     } else {  
       const path = '/minus';     
       return (
-        this.props.dispatch(addFeedback(formValues.postiveFeedback_input_didwell)),
+        /* this.props.dispatch(addFeedback(formValues.postiveFeedback_input_didwell)), */
         this.props.history.push(path)
       )
     }
@@ -293,7 +294,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(reduxForm({
   form: 'surveyForm',
   fields: ['positiveFeedback', 'rating_overall', 'rating_referral', 'acceptTermsAndConditions'],
   initialValues: {
@@ -303,4 +304,4 @@ export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
   },
   enableReinitialize: true
 },
-)(SurveyTemplate));
+)(SurveyTemplate)));
