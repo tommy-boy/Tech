@@ -1,47 +1,34 @@
 import React from 'react';
-import Link from 'next/link'
-import FlatButton from 'material-ui/FlatButton';
-import ActionCars from '~/CarsIcon';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+import Button from 'material-ui/Button';
+import ActionCars from '../CarsIcon';
 
 const styles = { 
   flatbutton: {
     marginBottom: 12,
-    width: '100%',  
+    width: '100%', 
+    color: '#FFFFFF', 
     backgroundColor: '#52277E',            
     hoverColor: 'transparent',
     verticalAlign: 'middle',
+    textTransform: "capitalize",
     textAlign: 'left',   
   },
   title: {  
     color: '#FFFFFF',      
-  },
-  label: {
-    fontSize: '0.9em',    
-    color: '#FFFFFF',
-    textTransform: 'normal',
-  }
+  }, 
 };
 
 class ShareCars extends React.Component {
 
-  constructor(props) {
-    super(props);    
-  }
-
   render() {
     return (      
-      <div>        
-        <Link href='http://www.cars.com'>
-          <a target="_blank">
-            <FlatButton 
-              style={styles.flatbutton} 
-              labelStyle={styles.label} 
-              label="Share your review on Cars.com"
-              labelPosition="after"
-              icon={<ActionCars />}
-            />
-          </a>
+      <div>
+        <Link to='http://www.cars.com' target="_blank" style={{ textDecoration: 'none' }} >        
+            <Button 
+              style={styles.flatbutton}              
+            ><ActionCars />
+            Share your review on Cars.com</Button>
         </Link>
       </div>
     );
