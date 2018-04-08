@@ -1,47 +1,33 @@
 import React from 'react';
-import Link from 'next/link'
-import FlatButton from 'material-ui/FlatButton';
-import ActionFacebook from '~/FacebookIcon';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+import Button from 'material-ui/Button';
+import ActionFacebook from '../FacebookIcon';
 
 const styles = { 
   flatbutton: {
     marginBottom: 12,
-    width: '100%',  
+    width: '100%',
+    color: '#FFFFFF',  
     backgroundColor: '#3B5998',            
     hoverColor: 'transparent',
     verticalAlign: 'middle',
+    textTransform: "capitalize",
     textAlign: 'left',   
   },
   title: {  
     color: '#FFFFFF',      
-  },
-  label: {
-    fontSize: '0.9em',    
-    color: '#FFFFFF',
-    textTransform: 'normal',
-  }
+  },  
 };
 
 class ShareFacebook extends React.Component {
 
-  constructor(props) {
-    super(props);   
-  }
-  
   render() {
     return (      
-      <div>        
-        <Link href='http://www.facebook.com'>
-          <a target="_blank">
-            <FlatButton 
-              style={styles.flatbutton} 
-              labelStyle={styles.label} 
-              label="Share your review on Facebook"
-              labelPosition="after" 
-              icon={<ActionFacebook />}              
-            />
-          </a>
+      <div>
+        <Link to='http://www.facebook.com' target="_blank" style={{ textDecoration: 'none' }}>        
+            <Button 
+              style={styles.flatbutton}                        
+            ><ActionFacebook />Share your review on Facebook</Button>
         </Link>
       </div>
     );
