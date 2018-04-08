@@ -1,8 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux';
-import Divider from 'material-ui/Divider';
-import VisitButtons from '../VisitButtons';
-import styled, {ThemeProvider} from 'styled-components';
+import Divider from 'material-ui/Divider'
+import VisitButtons from '../VisitButtons'
+import styled from 'styled-components'
 import Questions from '../../mock/surveyQuestions'
 
 const Container = styled.div`
@@ -43,29 +42,14 @@ const Salutation = styled.p`
   font-size: 1.0em;
   text-align: left;
   color: #4D4D4D;
-`;
-
-const Text = styled.div`
-  color: #4D4D4D;
-  font-size: 0.8em; 
-  line-height: normal;
-  text-align: center;
-  vertical-align: middle;
+  font-size: 20px;
+  font-weight: 700;
 `;
 
 const ReplyText = styled.p`
   font-size: 1.0em;
   text-align: left;
   color: #4D4D4D;
-`;
-
-const Footer = styled.div`
-  display: block; 
-  &::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
 `;
 
 const FooterRS = styled.div`
@@ -76,58 +60,6 @@ const FooterRS = styled.div`
   text-align: center;
   color: #4D4D4D; 
 `;
-
-const styles = {
-    root: {
-      flexGrow: 1,
-    },
-    block: {
-      display: 'inline',
-    },  
-    facebook: {
-        color: '#ffffff',
-        backgroundColor: "#094AA8",
-        hoverColor: "#063679",
-        width: '98px',
-        height: '43px',
-        verticalAlign: 'middle',
-    }, 
-    twitter: {
-        color: '#ffffff',
-        backgroundColor: "#094AA8",
-        hoverColor: "#063679",
-        width: '98px',
-        height: '43px',
-        verticalAlign: 'middle',
-    },
-    instagram: {
-        color: '#ffffff',
-        backgroundColor: "#094AA8",
-        hoverColor: "#063679",
-        width: '98px',
-        height: '43px',
-        verticalAlign: 'middle',
-    },     
-    icon: {
-      width: 20,
-      height: 20
-    },
-    iconStyle: {
-      width: 24,
-      height: 24,
-      fill: '#094AA8'
-    },   
-    textField: {
-      height: 80,
-      width: '100%',
-      padding: 0,
-      display: 'block',
-      textAlign: 'left',    
-      'label + &': {
-        marginTop: 12,
-      },    
-    },
-  };
 
 class SurveyThankYou extends React.Component {
   
