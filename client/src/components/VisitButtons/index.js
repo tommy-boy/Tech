@@ -1,7 +1,10 @@
 import React from 'react';
 import VisitFacebookButton from '~/VisitFacebookButton'
 import VisitTwitterButton from '~/VisitTwitterButton'
-import VisitInstagramButton from '~/VisitInstagramButton'
+import VisitInimport React from 'react';
+import VisitFacebookButton from '../VisitFacebookButton'
+import VisitTwitterButton from '../VisitTwitterButton'
+import VisitInstagramButton from '../VisitInstagramButton'
 
 class VisitButtons extends React.Component {
   
