@@ -27,9 +27,9 @@ class VisitFacebookButton extends React.Component {
         <Link to='http://www.facebook.com' style={{ textDecoration: 'none' }}>
             <Button 
               style={styles.flatbutton}             
-              label="Visit us on Facebook"
-              icon={<ActionFacebook />}  
-            >Visit us on Facebook</Button>
+            >
+            <ActionFacebook />
+            Visit us on Facebook</Button>
         </Link>       
       </div>
     );
