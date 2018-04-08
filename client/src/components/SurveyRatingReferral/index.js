@@ -1,6 +1,6 @@
 import React  from 'react';
 import { Field } from 'redux-form'
-import { Select,  MenuItem } from 'material-ui';
+import { Select, MenuItem } from 'material-ui';
 
 const ratings = [{ value: null, key: 0 },{ value: '10', key: 10 }, { value: '9', key: 9 }, { value: '8', key: 8 }, { value: '7', key: 7 }, { value: '6', key: 6 }, { value: '5', key: 5 }, { value: '4', key: 4 }, { value: '3', key: 3 }, { value: '2', key: 2 }, { value: '1', key: 1 }]
 
@@ -12,11 +12,6 @@ const renderSelectField = ({
   }) => (
     <Select
         style={{display:'block', width:'80%', paddingTop: 14, fontSize:14}}
-        underlineStyle={{borderColor:'#979797'}}
-        floatingLabelText={label}
-        floatingLabelStyle={{color: '#828282', fontSize:16}}
-        floatingLabelShrinkStyle={{fontSize:20}}
-        errorText={touched && error}
         {...input}
         onChange={(event, index, value) => input.onChange(value)}
         children={children}
