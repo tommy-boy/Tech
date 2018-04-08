@@ -9,7 +9,7 @@ const enhancer = composeWithDevTools(middleware)
 
 const store = createStore(
   rootReducer,
-  enhancer 
+  enhancer
 )
 
 export default store
