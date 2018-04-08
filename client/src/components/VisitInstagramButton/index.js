@@ -1,47 +1,35 @@
-import React from 'react';
-import Link from 'next/link'
-import FlatButton from 'material-ui/FlatButton';
-import ActionInstagram from '~/InstagramIcon';
-import styled from 'styled-components';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Button from 'material-ui/Button'
+import ActionInstagram from '../InstagramIcon'
 
 const styles = { 
   flatbutton: {
     marginBottom: 12,
     width: '100%',  
+    color: '#FFFFFF',
     backgroundColor: '#3B5998',            
     hoverColor: 'transparent',
     verticalAlign: 'middle',
+    textTransform: "capitalize",
     textAlign: 'left',   
   },
   title: {  
     color: '#FFFFFF',      
-  },
-  label: {
-    fontSize: '0.9em',    
-    color: '#FFFFFF',
-    textTransform: 'normal',
   }
 };
 
 class VisitInstagramButton extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    return (      
+    return ( 
       <div>        
-        <Link href='http://www.instagram.com'>
-        <a target="_blank">
-            <FlatButton 
-            style={styles.flatbutton} 
-            labelStyle={styles.label} 
-            label="Visit us on Instagram"
-            labelPosition="after" 
-            icon={<ActionInstagram />} 
-            />
-        </a>
+        <Link to='http://www.instagram.com' target="_blank" style={{ textDecoration: 'none' }}>
+            <Button 
+              style={styles.flatbutton}            
+            >
+            <ActionInstagram />
+            Visit us on Instagram</Button>
         </Link>       
       </div>
     );
