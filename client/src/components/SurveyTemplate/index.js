@@ -7,14 +7,14 @@ import { fetchSurveyData } from '../../actions/getSurvey'
 /* import { submitSurvey } from '../../actions/submitSurvey' */
 import { addFeedback } from '../../actions/addFeedback'
 import Divider from 'material-ui/Divider'
-import { Button } from 'material-ui';
-import styled from 'styled-components'
+import { Button } from 'material-ui'
 import RatingOverall from '../SurveyRatingOverall'
 import RatingReferral from '../SurveyRatingReferral'
 import FreeText from '../SurveyFreeText'
 import TOSCheckbox from '../SurveyCheckbox'
 import Terms from '../SurveyTermsOfUse'
 import Loader from '../RefreshIndicator'
+import styled from 'styled-components'
 
 const Container = styled.div`
   display: block;
@@ -169,12 +169,13 @@ class SurveyTemplate extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  /* componentDidMount(props) {
+  componentDidMount(props) {
     const { fetchSurveyData, surveyId } = this.props;
-    fetchSurveyData(parseInt(props.match.params.number)).then(survey => {
+    console.log(this.props);
+    /* fetchSurveyData(parseInt(props.match.params.number)).then(survey => {
       this.setState({survey});
-    })
-  } */
+    }) */
+  }
 
   handleFormSubmit(formValues) {
 
@@ -185,15 +186,17 @@ class SurveyTemplate extends React.Component {
       return <Loader />
     }
     
-    if (formValues.rating_overall > 3) {      
+    if (formValues.rating_overall > 3) {
+      const path = '/plus'; 
       return (
         this.props.dispatch(addFeedback(formValues.postiveFeedback__input_didwell)),
-        this.props.history.push('/SurveyPositiveFeedback')
+        this.props.history.push(path)
       )
-    } else {     
+    } else {  
+      const path = '/minus';     
       return (
         this.props.dispatch(addFeedback(formValues.postiveFeedback_input_didwell)),
-        this.props.history.push('/SurveyNegativeFeedback')
+        this.props.history.push(path)
       )
     }
   }
