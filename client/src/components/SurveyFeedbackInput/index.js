@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { reduxForm, formValueSelector } from 'redux-form'
-import styled, {ThemeProvider} from 'styled-components'
+import styled from 'styled-components'
 import { TextField } from 'material-ui';
 
 const Fieldset = styled.fieldset`
@@ -10,36 +9,14 @@ const Fieldset = styled.fieldset`
   padding: 0;
 `;
 
-const styles = {
+const styles = {        
   textField: {
-    marginBottom: 30,
-    height: 80,
-    width: '100%',
-    padding: 0,
-    display: 'block',
     textAlign: 'left',    
     'label + &': {
       marginTop: 12,
+      marginLeft: 12
     },    
-  },
-  textFieldInput: {    
-    borderRadius: 2,
-    border: '1px solid #9B9B9B',
-    fontSize: '1.0em',
-    padding: '0px 12px',
-    width: 'calc(100% - 26px)',
-    transition: 'width 2s, height 2s, background-color 2s, transform 2s',
-    '&:focus': {
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-    },
   },    
-  hintTextStyle: {
-    top: 10,
-    left: 12,
-    fontSize: '0.85em',
-    color: 'rgba(0,0,0,0.38)'
-  }
 };
 
 class FeedbackInput extends React.Component {
@@ -59,15 +36,12 @@ class FeedbackInput extends React.Component {
               <TextField
                 name="positiveFeedback"              
                 style={styles.textField} 
-                defaultValue={this.props.positiveFeedback}                         
-                underlineShow={false}
+                defaultValue={this.props.positiveFeedback}                                        
                 placeholder=""
-                hintStyle={styles.hintTextStyle}
-                multiLine={true}
+                multiline              
                 rows={4}
                 rowsMax={8}
-                fullWidth={true}
-                inputStyle = {styles.textFieldInput}                                    
+                fullWidth={true}                                                 
               />                
             </Fieldset>
           </form> 
