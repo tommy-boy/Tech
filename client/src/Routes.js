@@ -1,47 +1,17 @@
-import React, { Component}  from 'react';
-import { Route, Switch } from "react-router-dom";
-import asyncRoute from "./components/AsyncRoute";
-import asyncComponent from "./components/AsyncComponent";
-import AppliedRoute from "./components/AppliedRoute";
-import AuthenticatedRoute from "./components/AuthenticatedRoute";
-import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
-
-const AsyncSurvey = Loadable({
-    loader: () => import("./containers/SurveyContainer"),
-    loading: MyLoadingComponent
-});
-/* const AsyncPositiveFeedback = asyncComponent(() => import("./containers/SurveyPositiveFeedbackContainer"));
-const AsyncNegativeFeedback = asyncComponent(() => import("./containers/SurveyNegativeFeedbackContainer"));
-const AsyncThankYou = asyncComponent(() => import("./containers/SurveyThankYouContainer")); */
-const AsyncNotFound = asyncComponent(() => import("./containers/NotFound"));
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom'
+import SurveyTemplate from './components/SurveyTemplate'
+import SurveyPositiveFeedback from './components/SurveyPositiveFeedback'
+import SurveyNegativeFeedback from './components/SurveyNegativeFeedback'
+import SurveyThankYou from './components/SurveyThankYou'
 
 export default ({ childProps }) =>
+
   <Switch>
-    <Route
-      path="/"
-      exact
-      component={AsyncSurvey}
-      props={childProps}
-    />    
-    {/* <Route
-      path="/SurveyPositiveFeedback"
-      exact
-      component={AsyncPositiveFeedback}
-      props={childProps}
-    />
-    <Route
-      path="/SurveyNegativeFeedback"
-      exact
-      component={AsyncNegativeFeedback}
-      props={childProps}
-    />
-    <Route
-      path="/SurveyThankYou"
-      exact
-      component={AsyncThankYou}
-      props={childProps}
-    /> */}
-    {/* catch all unmatched routes */}
-    <Route component={AsyncNotFound} />
+    <Route path="/:id" component={SurveyTemplate} />
+    <Route path="/plus" component={SurveyPositiveFeedback} />
+    <Route path="/minus" component={SurveyNegativeFeedback} />
+    <Route path="/thankyou" component={SurveyThankYou} />
+    <Route render={() => <h1>Page not found</h1>} />
   </Switch>
 ;
