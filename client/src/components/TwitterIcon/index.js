@@ -8,4 +8,4 @@ const Icon = styled.img`
     vertical-align: middle;
 `;
 
-export default () => <Icon src="../../static/icons/Twitter.png" />
+export default () => <Icon src="../Shared/icons/Twitter.png" />
