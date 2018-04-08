@@ -1,8 +1,8 @@
 import React from 'react';
-import ShareEdmundsButton from '~/SurveyShareEdmunds'
-import ShareFacebookButton from '~/SurveyShareFacebook'
-import ShareGoogleButton from '~/SurveyShareGoogle'
-import ShareCarsButton from '~/SurveyShareCars'
+import ShareEdmundsButton from '../SurveyShareEdmunds'
+import ShareFacebookButton from '../SurveyShareFacebook'
+import ShareGoogleButton from '../SurveyShareGoogle'
+import ShareCarsButton from '../SurveyShareCars'
 
 class ShareButtons extends React.Component {
   
