@@ -6,13 +6,15 @@ import ActionEdmunds from '../EdmundsIcon';
 const styles = { 
   flatbutton: {
     marginBottom: 12,
+    paddingLeft: 0,
     width: '100%',  
     color: '#FFFFFF',
     backgroundColor: '#0080E2',            
     hoverColor: 'transparent',
     verticalAlign: 'middle',
     textTransform: "capitalize",
-    textAlign: 'left',   
+    textAlign: 'left', 
+    justifyContent: 'initial'  
   },
   title: {  
     color: '#FFFFFF',      
