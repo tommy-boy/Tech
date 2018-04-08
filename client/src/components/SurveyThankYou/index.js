@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import Divider from 'material-ui/Divider';
-import VisitButtons from '~/VisitButtons';
+import VisitButtons from '../VisitButtons';
 import styled, {ThemeProvider} from 'styled-components';
-import Questions from '@/mock/surveyQuestions'
+import Questions from '../../mock/surveyQuestions'
 
 const Container = styled.div`
   display: block;
@@ -129,7 +129,7 @@ const styles = {
     },
   };
 
-class SurveyThankYouPage extends React.Component {
+class SurveyThankYou extends React.Component {
   
   constructor(props) {
     super(props);
@@ -176,3 +176,4 @@ class SurveyThankYouPage extends React.Component {
   }
 }
 
+export default (SurveyThankYou)
