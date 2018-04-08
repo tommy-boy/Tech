@@ -6,14 +6,15 @@ import ActionTwitter from '../TwitterIcon';
 const styles = { 
   flatbutton: {
     marginBottom: 12,
+    paddingLeft: 0,
     width: '100%',
     color: '#FFFFFF',  
     backgroundColor: '#55ACEE',            
     hoverColor: 'transparent',
     verticalAlign: 'middle',
     textTransform: "capitalize",
-
     textAlign: 'left', 
+    justifyContent: 'initial'
   },
   title: {  
     color: '#FFFFFF',      
@@ -26,9 +27,7 @@ class VisitTwitterButton extends React.Component {
     return ( 
       <div>        
         <Link to='http://www.twitter.com' target="_blank" style={{ textDecoration: 'none' }}>
-            <Button 
-              style={styles.flatbutton}        
-            >
+            <Button style={styles.flatbutton}>
               <ActionTwitter />
               Visit us on Twitter
             </Button>
