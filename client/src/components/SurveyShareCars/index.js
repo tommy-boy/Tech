@@ -6,13 +6,15 @@ import ActionCars from '../CarsIcon';
 const styles = { 
   flatbutton: {
     marginBottom: 12,
+    paddingLeft: 0,
     width: '100%', 
     color: '#FFFFFF', 
     backgroundColor: '#52277E',            
     hoverColor: 'transparent',
     verticalAlign: 'middle',
     textTransform: "capitalize",
-    textAlign: 'left',   
+    textAlign: 'left',
+    justifyContent: 'initial'  
   },
   title: {  
     color: '#FFFFFF',      
