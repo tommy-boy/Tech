@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import changeClipboardValue from '../../actions/changeClipboardValue'
 import Feedback from '../SurveyFeedbackInput';
 import ShareButtons from '../SurveyShareButtons'
@@ -57,6 +57,12 @@ const Salutation = styled.p`
   color: #4D4D4D;
 `;
 
+const TextBox = styled.div`
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #828282;
+`;
+
 const SurveyText = styled.p`
   font-size: 1.0em;
   text-align: left;
@@ -95,6 +101,7 @@ const styles = {
     hoverColor: 'transparent',
     verticalAlign: 'middle',
     textAlign: 'center',
+    textTransform: "capitalize",
     float: 'right'   
   },
   title: {  
@@ -112,6 +119,13 @@ class SurveyPositiveFeedback extends React.Component {
     }
   }
 
+  handleOnClick = () => {
+    const path = '/thankyou';
+    return (
+      this.props.history.push(path)
+    )
+  }
+
   onCopy = () => {
     this.setState({ copied: true });
   }
@@ -127,17 +141,18 @@ class SurveyPositiveFeedback extends React.Component {
           <Salutation> {entity.feedbackPages.positive.salutation.value} </Salutation>
           <SurveyText>{entity.properties.introText.value} </SurveyText>
           <SurveyText> {entity.feedbackPages.positive.body.value} </SurveyText>
-          <Feedback />
+          <TextBox>
+            <Feedback />
+          </TextBox>
           <CopyToClipboard 
             text={this.props.copiedText} 
             onCopy={this.onCopy}
           >
           <Button 
-                style={styles.flatbutton} 
-                label="Copy to Clipboard"
-                labelPosition="after"
-                icon={<ContentCopy />}
-              />
+            style={styles.flatbutton} 
+          ><ContentCopy />
+            Copy to Clipboard
+          </Button>
           </CopyToClipboard>
           <ShareButtons />
           <SurveyText>               
@@ -146,16 +161,13 @@ class SurveyPositiveFeedback extends React.Component {
           <Divider style={{backgroundColor:'#979797', height: 2, marginTop:32, marginBottom:32}} />
           <Footer>                                                                            
             <ColRight>
-            <Link href='/thankyou'>
-              <a>     
                 <Button
                   style={styles.flatbutton}
                   label="DONE"
-                  primary={true}
-                  type="submit"                                     
-                />
-              </a>
-            </Link>
+                  primary="true"
+                  type="submit"
+                  onClick={this.handleOnClick}                                     
+                >DONE</Button>
             </ColRight>           
           </Footer>         
         </Wrapper>         
@@ -163,7 +175,7 @@ class SurveyPositiveFeedback extends React.Component {
       <FooterRS>
         4216 N Expressway 281 Edinburg, TX 78539 | 973.442.0500
       </FooterRS> 
-      </div>       
+      </div>    
     );
   }
 }
@@ -178,4 +190,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SurveyPositiveFeedback)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SurveyPositiveFeedback))
