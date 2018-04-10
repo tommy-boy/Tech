@@ -171,11 +171,11 @@ class SurveyTemplate extends React.Component {
   }
 
   componentDidMount(props) {
-    const { fetchSurveyData, surveyId } = this.props;
-    console.log(this.props);
-    /* fetchSurveyData(parseInt(props.match.params.number)).then(survey => {
+    const { fetchSurveyData } = this.props;
+    const surveyId = 'ca556c96-ea47-4316-ab07-efd2057c02c7' //test id   
+    fetchSurveyData(surveyId).then(survey => {
       this.setState({survey});
-    }) */
+    })
   }
 
   handleFormSubmit(formValues) {
@@ -196,7 +196,7 @@ class SurveyTemplate extends React.Component {
     } else {  
       const path = '/minus';     
       return (
-        /* this.props.dispatch(addFeedback(formValues.postiveFeedback_input_didwell)), */
+        this.props.dispatch(addFeedback(formValues.postiveFeedback_input_didwell)),
         this.props.history.push(path)
       )
     }
@@ -252,17 +252,17 @@ class SurveyTemplate extends React.Component {
         {this.state.entity ?
         <div>           
           <Container>
-            <Header><Logo img src={entity.properties.headerLogoUri} /></Header>
+            <Header>{<Logo img src={entity.properties.headerLogoUri} />}</Header>
             <Divider style={{ backgroundColor: '#979797', height: 2 }} />
             <Wrapper>
-              <SurveyText>{entity.properties.introText.value} </SurveyText>
+             {<SurveyText>{entity.properties.introText.value} </SurveyText>}
               <form id="surveyForm" onSubmit={handleSubmit(this.handleFormSubmit)} >
                 {sections}
                 <Divider style={{ backgroundColor: '#979797', height: 2, marginTop: 48, marginBottom: 32 }} />
                 <Footer>
                   <ColLeft>
                     <TOSCheckbox />                  
-                    <Text>{entity.properties.finePrintText.value}</Text>
+                    {<Text>{entity.properties.finePrintText.value}</Text>}
                     <Terms />
                   </ColLeft>
                   <ColRight>
